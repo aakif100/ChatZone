@@ -1,0 +1,44 @@
+<!-- main home page -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <title>Home Page</title>
+ </head>
+ <body>
+    <h1>Chat Zone</h1>
+    <h2>ALL CHATS</h2>
+
+    <a href="http://localhost:1010/chats/new">    <button>New chat </button>
+    </a>
+    <br>
+
+
+    <% for(let chat of chats) { %>
+       <div class="chat">
+        <p> From : <%= chat.from %></p>
+       
+        <div class="message" >
+            <p> Message : <%= chat.msg %></p>
+         <form method="get" action="/chats/<%= chat._id %>/edit">
+            <button>
+               Edit Chat
+            </button>
+         </form>
+<br><br>
+         <form method="post" action="/chats/<%= chat._id %>?_method=DELETE" >
+            <button> Delete Chat </button>
+
+        </form>
+        </div>
+        <p> Received by : <%= chat.to %></p>
+        <P> <%= chat.created.toString().split(" ")[4] %></P>
+        <P> <%= chat.created.toString().split(" ").slice(0,4).join(" - ") %></P>
+
+       </div>
+       <hr>
+        <% } %>
+ </body>
+ </html>
