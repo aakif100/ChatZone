@@ -1,6 +1,6 @@
 # ChatZone (update 1.1 done, 1.2 done)
 
-new update features :
+ update 1.2 features :
 - improved user ecxperience with smooth interface
 -  added edited at timestap when user edits his/her message
 - embeded with theme based scroll bar for better and catchy UI
