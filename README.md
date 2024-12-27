@@ -2,7 +2,7 @@
 
  update 1.2 features :
 - improved user experience with smooth interface
--  added edited at timestap when user edits his/her message
+-  added "edited at" timestap when user edits his/her message
 - embeded with theme based scroll bar for better and catchy UI
 - added smooth ease-in-out alert of "page ended" when scrolled to the bottom of the page 
 
