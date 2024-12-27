@@ -1,0 +1,100 @@
+<!-- main home page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Platform</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(
+                transparent,
+                rgba(77, 171, 247, 0.5),
+                rgba(77, 171, 247, 0.7)
+            );
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(77, 171, 247, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(
+                transparent,
+                rgba(77, 171, 247, 0.7),
+                rgba(77, 171, 247, 0.9)
+            );
+            box-shadow: 0 0 20px rgba(77, 171, 247, 0.8);
+        }
+
+        /* Add smooth scrolling to body */
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+      <div class="glass-card">
+         <h2 class="glass-text">What's on your mind?</h2>
+         <a href="/chats/new">
+            <button>New chat</button>
+         </a>
+         <br>
+      </div>
+      </div>
+
+
+      <div class="glass-heading">
+         <h1 class="animate-heading">All Chats</h1>
+      </div>
+   </div>
+
+      
+        <div class="posts">
+            <% for(let chat of chats) { %>
+                <div class="post">
+                    <div class="post-header">
+                        <span><%= new Date(chat.created).toLocaleString() %></span>
+                    </div>
+                    <div class="post-content">
+                        <p class="sender-info">From: <%= chat.from %> ➜</p>
+                        <p class="message-content"><%= chat.msg %></p>
+                        <p class="receiver-info">➜ To: <%= chat.to %></p>
+                        <div class="chat-message">
+                            <p>Message: <%= chat.msg %></p>
+                            <p>Created: <%= chat.created.toLocaleString() %></p>
+                            <% if(chat.updated_at) { %>
+                                <p><small>Last edited: <%= chat.updated_at.toLocaleString() %></small></p>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <form method="get" action="/chats/<%= chat._id %>/edit">
+                            <button>Edit Chat</button>
+                        </form>
+                        <form method="post" action="/chats/<%= chat._id %>?_method=DELETE">
+                            <button class="delete-btn">Delete Chat</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+<script src="/scroll.js"></script>
+</html>
